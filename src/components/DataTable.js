@@ -32,11 +32,13 @@ function Row(props) {
   const handleOpen = () => {
     fetchCommits(row.commitsURL).then((data) => {
       let commits = [];
-      data.forEach((item, index) => {
+      data.forEach((item) => {
         let commit = {};
         commit.hash = item.sha;
         commit.title = item.commit.message;
-        commit.username = item.author.login;
+        commit.username = item.commit.author.login
+          ? item.commit.author.login
+          : item.commit.author.name;
         commit.date = formatDate(item.commit.author.date);
         commits.push(commit);
       });
