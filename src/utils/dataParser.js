@@ -10,14 +10,16 @@ const dataParser = (data) => {
     repo.hash = item.id;
     repo.name = item.name;
     repo.language = item.language;
-    repo.description = item.description ? item.description : "n/a";
+    repo.description = item.description || "n/a";
     repo.stars = item.stargazers_count;
     repo.forks = item.forks_count;
     repo.created = formatDate(item.created_at);
-    repo.updated = formatDate(item.updated_at);
+    repo.updated = timeAgo(item.updated_at);
     repo.commitsURL = `https://api.github.com/repos/Netflix/${repo.name}/commits`;
     repos.push(repo);
   });
+  repos.sort((a, b) => b.stars - a.stars);
+
   return repos;
 };
 
