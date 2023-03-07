@@ -49,8 +49,8 @@ function Row({ row }) {
   };
 
   return (
-    <React.Fragment>
-      <TableRow key={row.hash} sx={{ "& > *": { borderBottom: "unset" } }}>
+    <>
+      <TableRow key={row.hash}>
         <TableCell padding="checkbox">
           <IconButton aria-label="expand row" size="small" onClick={handleOpen}>
             {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
@@ -74,17 +74,25 @@ function Row({ row }) {
                 </Typography>
               </Box>
             ) : (
-              <Box sx={{ margin: 1 }}>
+              <Box sx={{ margin: 4 }}>
                 <Typography variant="h6" gutterBottom component="div">
-                  Commits
+                  Commits List
                 </Typography>
                 <Table size="small">
                   <TableHead>
                     <TableRow>
-                      <TableCell align="left">Title</TableCell>
-                      <TableCell align="left">Username</TableCell>
-                      <TableCell align="left">Hash</TableCell>
-                      <TableCell align="left">Date Created</TableCell>
+                      <TableCell sx={{ fontWeight: "bold" }} align="left">
+                        Title
+                      </TableCell>
+                      <TableCell sx={{ fontWeight: "bold" }} align="left">
+                        Username
+                      </TableCell>
+                      <TableCell sx={{ fontWeight: "bold" }} align="left">
+                        Hash
+                      </TableCell>
+                      <TableCell sx={{ fontWeight: "bold" }} align="left">
+                        Date Created
+                      </TableCell>
                     </TableRow>
                   </TableHead>
                   <TableBody>
@@ -103,24 +111,39 @@ function Row({ row }) {
           </Collapse>
         </TableCell>
       </TableRow>
-    </React.Fragment>
+    </>
   );
 }
 
 const DataTable = ({ repos }) => {
   return (
-    <TableContainer component={Paper}>
+    // <TableContainer component={Paper}>
+    <TableContainer className="table-bg">
       <Table aria-label="collapsible table" size="medium">
         <TableHead>
           <TableRow>
             <TableCell />
-            <TableCell align="left">Name</TableCell>
-            <TableCell align="left">Language</TableCell>
-            <TableCell align="left">Description</TableCell>
-            <TableCell align="left">Stars</TableCell>
-            <TableCell align="left">Forks</TableCell>
-            <TableCell align="left">Date Created</TableCell>
-            <TableCell align="left">Last Updated</TableCell>
+            <TableCell sx={{ fontWeight: "bold" }} align="left">
+              Name
+            </TableCell>
+            <TableCell sx={{ fontWeight: "bold" }} align="left">
+              Language
+            </TableCell>
+            <TableCell sx={{ fontWeight: "bold" }} align="left">
+              Description
+            </TableCell>
+            <TableCell sx={{ fontWeight: "bold" }} align="left">
+              Stars
+            </TableCell>
+            <TableCell sx={{ fontWeight: "bold" }} align="left">
+              Forks
+            </TableCell>
+            <TableCell sx={{ fontWeight: "bold" }} align="left">
+              Date Created
+            </TableCell>
+            <TableCell sx={{ fontWeight: "bold" }} align="left">
+              Last Updated
+            </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
