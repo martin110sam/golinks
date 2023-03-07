@@ -13,17 +13,18 @@ const timeAgo = (dateString) => {
   const days = diffDays % 365; // calculate the remaining days after removing the years
   let timeAgoString = "";
 
-  if (diffYears > 0) {
+  if (diffYears) {
     // if difference in years is greater than zero
     timeAgoString += diffYears + " years, ";
   }
-  if (days > 0) {
+  if (days) {
     // if remaining days is greater than zero
     timeAgoString += days + " days, ";
   }
-  if (hours > 0) {
+  if (hours) {
     timeAgoString += hours + " hours, ";
   }
+
   timeAgoString += minutes + " minutes ago";
   return timeAgoString;
 };

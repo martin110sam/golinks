@@ -23,29 +23,29 @@ function fetchCommits(url) {
     .catch((err) => console.error(err));
 }
 
-function Row(props) {
-  const { row } = props;
+function Row({ row }) {
   const [open, setOpen] = useState(false);
   const [rowCommits, setRowCommits] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   const handleOpen = () => {
-    fetchCommits(row.commitsURL).then((data) => {
-      let commits = [];
-      data.forEach((item) => {
-        let commit = {};
-        commit.hash = item.sha;
-        commit.title = item.commit.message;
-        commit.username = item.commit.author.login
-          ? item.commit.author.login
-          : item.commit.author.name;
-        commit.date = formatDate(item.commit.author.date);
-        commits.push(commit);
-      });
-      setRowCommits(commits);
-      setIsLoading(false);
-      setOpen(!open);
-    });
+    open
+      ? setOpen(!open)
+      : fetchCommits(row.commitsURL).then((data) => {
+          let commits = [];
+          data.forEach((item) => {
+            let commit = {};
+            commit.hash = item.sha;
+            commit.title = item.commit.message;
+            commit.username = item.commit.author.login || item.commit.author.name;
+            commit.date = formatDate(item.commit.author.date);
+            commits.push(commit);
+          });
+          setRowCommits(commits);
+          setIsLoading(false);
+          setOpen(!open);
+          console.log(commits);
+        });
   };
 
   return (
@@ -110,9 +110,6 @@ function Row(props) {
 const DataTable = ({ repos }) => {
   return (
     <TableContainer component={Paper}>
-      <Typography variant="h3" gutterBottom component="div">
-        Netflix Repositories
-      </Typography>
       <Table aria-label="collapsible table" size="medium">
         <TableHead>
           <TableRow>

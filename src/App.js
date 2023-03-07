@@ -24,7 +24,18 @@ const App = () => {
 
   return (
     <>
-      <DataTable repos={repos} />
+      <div className="app">
+        <div className="content">
+          <div className="header">
+            <div className="title ">NETFLIX REPOSITORY VIEWER</div>
+          </div>
+          <div className="table-container">
+            <div className="table">
+              {isLoading ? <CircularProgress /> : <DataTable repos={repos} />}
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   );
 };
