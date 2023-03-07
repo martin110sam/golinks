@@ -56,7 +56,9 @@ function Row({ row }) {
             {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
           </IconButton>
         </TableCell>
-        <TableCell align="left">{row.name}</TableCell>
+        <TableCell className="text" align="left">
+          {row.name}
+        </TableCell>
         <TableCell align="left">{row.language}</TableCell>
         <TableCell align="left">{row.description}</TableCell>
         <TableCell align="left">{row.stars}</TableCell>
@@ -117,14 +119,13 @@ function Row({ row }) {
 
 const DataTable = ({ repos }) => {
   return (
-    // <TableContainer component={Paper}>
     <TableContainer className="table-bg">
       <Table aria-label="collapsible table" size="medium">
         <TableHead>
           <TableRow>
             <TableCell />
             <TableCell sx={{ fontWeight: "bold" }} align="left">
-              Name
+              Repo Name
             </TableCell>
             <TableCell sx={{ fontWeight: "bold" }} align="left">
               Language
@@ -141,7 +142,7 @@ const DataTable = ({ repos }) => {
             <TableCell sx={{ fontWeight: "bold" }} align="left">
               Date Created
             </TableCell>
-            <TableCell sx={{ fontWeight: "bold" }} align="left">
+            <TableCell sx={{ fontWeight: "bold", width: 300 }} align="left">
               Last Updated
             </TableCell>
           </TableRow>

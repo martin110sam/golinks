@@ -20,7 +20,6 @@ body {
 .app {
   display: flex;
   justify-content: center;
-  // max-width: 2000px;
 }
 
 .content {
@@ -48,7 +47,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 5rem;
+  font-size: 4rem;
   border-top: 2px solid $orange;
   border-bottom: 2px solid $orange;
 }
@@ -61,4 +60,5 @@ body {
 
 .table-bg {
   background-color: $grey;
+  border-radius: 5px;
 }
