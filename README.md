@@ -1,1 +1,1 @@
-Site: https://bit.ly/40yqgnp
+Site: https://golinks110.netlify.app
